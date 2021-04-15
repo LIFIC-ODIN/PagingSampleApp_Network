@@ -1,12 +1,10 @@
 # PagingSampleApp_Network
 
 
-Paging 사용하기
-=================
 
-------------
 kakao rest api를 이용하여 이미지를 저장하며 페이징 처리.
 ---------------
+
 
 used library
 --------------
@@ -27,7 +25,6 @@ used library
 * [Kotlin Coroutines][91]
 * [Paging3][7]
 * [Preference][8]
-* [Timber]
 * [Rxjava3][9]
 
 [0]: https://developer.android.com/jetpack/components

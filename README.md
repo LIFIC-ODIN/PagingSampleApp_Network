@@ -22,7 +22,7 @@ used library
 * [Okhttp3][3]
 * [Retrofit2][5]
 * [Kakao][6]
-* [Coil][90]
+* [Coil][15]
 * [Hilt][92]
 * [Kotlin Coroutines][91]
 * [Paging3][7]
@@ -45,6 +45,7 @@ used library
 [12]: https://developer.android.com/topic/libraries/architecture/lifecycle
 [13]: https://developer.android.com/topic/libraries/architecture/livedata
 [14]: https://developer.android.com/topic/libraries/architecture/navigation/
+[15]: https://github.com/coil-kt/coil
 [16]: https://developer.android.com/topic/libraries/architecture/room
 [17]: https://developer.android.com/topic/libraries/architecture/viewmodel
 [30]: https://developer.android.com/guide/topics/ui

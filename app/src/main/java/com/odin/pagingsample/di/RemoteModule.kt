@@ -20,7 +20,7 @@ import javax.inject.Singleton
 object RemoteModule {
 
     const val BASE_URL = "https://dapi.kakao.com/"
-    private const val header = "KakaoAK 7f96de09746b05e18fab45310915c096"
+    private const val header = "rest api"
 
     @Provides
     fun provideKakaoService(): KakaoService {

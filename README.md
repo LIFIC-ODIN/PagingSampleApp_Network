@@ -1,7 +1,11 @@
 # PagingSampleApp_Network
-------------
+
+
+
 kakao rest api를 이용하여 이미지를 저장하며 페이징 처리.
 ---------------
+
+
 used library
 --------------
 * [AppCompat][1]

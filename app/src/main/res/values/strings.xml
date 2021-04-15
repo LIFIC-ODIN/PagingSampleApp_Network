@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PagingSample</string>
+
+    <string name="txt_change_theme">테마 변경</string>
+</resources>

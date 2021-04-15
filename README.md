@@ -25,7 +25,6 @@ used library
 * [Kotlin Coroutines][91]
 * [Paging3][7]
 * [Preference][8]
-* [Timber]
 * [Rxjava3][9]
 
 [0]: https://developer.android.com/jetpack/components

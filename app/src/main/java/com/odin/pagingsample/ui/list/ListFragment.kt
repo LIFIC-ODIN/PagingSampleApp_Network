@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class ListFragment : Fragment() {
 
@@ -24,7 +25,7 @@ class ListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -33,13 +34,22 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val imageAdapter = ImageAdapter { item, extras ->
-//            val args = bundleOf("id" to item.id)
-//            findNavController().navigate(R.id.action_ListFragment_to_InfoFragment, args,
-//                null, extras)
+
         }.apply { addLoadStateListener { binding.loadState = it.refresh } }
 
-        binding.adapter = imageAdapter
+        with(binding) {
+            vm = viewModel
+            adapter = imageAdapter
+        }
 
+        searchData(imageAdapter)
+
+        binding.btnSearch.setOnClickListener {
+            searchData(imageAdapter)
+        }
+    }
+
+    private fun searchData(imageAdapter: ImageAdapter) {
         lifecycleScope.launch {
             viewModel.flow.collectLatest { pagingData ->
                 imageAdapter.submitData(pagingData)

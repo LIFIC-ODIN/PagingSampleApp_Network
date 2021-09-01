@@ -1,6 +1,7 @@
 package com.odin.pagingsample.network
 
 import com.odin.pagingsample.model.ResponseImage
+import com.odin.pagingsample.util.GET_DATA_COUNT
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -24,6 +25,6 @@ interface KakaoService {
         private const val VALUE_DEFAULT_PAGE = 1
 
         //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
-        private const val VALUE_DEFAULT_SIZE = 50
+        private const val VALUE_DEFAULT_SIZE = GET_DATA_COUNT
     }
 }

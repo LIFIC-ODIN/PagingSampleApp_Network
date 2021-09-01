@@ -28,6 +28,7 @@ class ImageAdapter(
         imageData?.let {
             val imageListItem = ImageListItem(
                 siteName = imageData.display_sitename,
+                docUrl = imageData.doc_url,
                 thumbnailUrl = imageData.thumbnail_url,
                 time = DateConverter.getDate(imageData.datetime.time)
             )
@@ -44,18 +45,11 @@ class ImageAdapter(
             clickListener: (ImageListItem, Navigator.Extras) -> Unit
         ) {
             binding.image = item
-//            ViewCompat.setTransitionName(binding.root, "${item.id}")
-//            itemView.setOnClickListener {
-//                val extras = FragmentNavigatorExtras(
-//                    binding.root to "${item.id}"
-//                )
-//                clickListener(item, extras)
-//            }
         }
     }
 
     companion object {
-        val DIFF_CALLBACK = object: DiffUtil.ItemCallback<SearchDocuments>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<SearchDocuments>() {
             override fun areItemsTheSame(
                 oldItem: SearchDocuments,
                 newItem: SearchDocuments
@@ -68,5 +62,10 @@ class ImageAdapter(
         }
     }
 
-    data class ImageListItem(val siteName: String, val thumbnailUrl: String, val time: String)
+    data class ImageListItem(
+        val siteName: String,
+        val docUrl: String,
+        val thumbnailUrl: String,
+        val time: String
+    )
 }

@@ -4,26 +4,24 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.odin.pagingsample.model.SearchDocuments
 import com.odin.pagingsample.repository.ImageRepository
-import com.odin.pagingsample.util.SEARCH_QUERY
 import java.net.UnknownHostException
 
 class SearchImagePagingSource(
-    private val imageRepository: ImageRepository
+    private val imageRepository: ImageRepository,
+    private val keyword : String
 ) : PagingSource<Int, SearchDocuments>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SearchDocuments> {
+
+        val page = params.key ?: 1
         return try {
-
-            val nextPageNumber = params.key ?: 0
-            val getImageData = imageRepository.fetchImageList(nextPageNumber, SEARCH_QUERY)
-
+            val items = imageRepository.fetchImageList(page, params.loadSize, keyword)
             LoadResult.Page(
-                data = getImageData,
+                data = items,
                 prevKey = null,
-                nextKey = nextPageNumber + 1
+                nextKey = page+1
             )
-
-        } catch (e: UnknownHostException) {
-            LoadResult.Error(e)
+        } catch (e: Exception) {
+            return LoadResult.Error(e)
         }
     }
 

@@ -10,11 +10,11 @@ class ImageRepositoryImpl @Inject constructor(
     private val imageDao: ImageDao,
     private val kakaoService: KakaoService
 ) : ImageRepository {
-    override suspend fun fetchImageList(nextPage: Int, query: String): MutableList<SearchDocuments> {
+    override suspend fun fetchImageList(page: Int, loadSize: Int, query: String): MutableList<SearchDocuments> {
         try {
             val getImageList = kakaoService.getImageList(
                 query = query,
-                page = if (nextPage == 0) 1 else nextPage + 1
+                page = if (page == 0) 1 else page + 1
             )
             getImageList.documents.map {
                 imageDao.insertAll(it)
@@ -23,6 +23,6 @@ class ImageRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Timber.e("failed :: $e")
         }
-        return imageDao.getImageList(nextPage)
+        return imageDao.getImageList(page, loadSize)
     }
 }
